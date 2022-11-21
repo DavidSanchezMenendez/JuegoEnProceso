@@ -25,10 +25,10 @@ public class ParticulasDisparo : MonoBehaviour
         if (other.gameObject.name.Equals("Enemigo") || other.gameObject.name.Equals("Cube(Clone)"))
         {
             //int hits = particulasDisparo.GetCollisionEvents(other, colisionBalas);
-            Debug.Log("hit");
+         
             enemigo = other.gameObject.GetComponent<Enemigo>();//Coje el script de cada enemigo que golpe entonces si golepa a 1 ese 1 recibira su daño a parte si golpea a enemigo 3 este recibira el daño
                                                                //Debug.Log(other.gameObject.name);
-            enemigo.RecibirDisparo(33);
+           // enemigo.RecibirDisparo(0);
         }
         
 

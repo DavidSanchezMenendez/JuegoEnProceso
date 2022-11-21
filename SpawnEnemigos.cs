@@ -2,32 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SpawnEnemigos : MonoBehaviour
 {
-    public List<GameObject> Enemigos = new List<GameObject>();
-    // Start is called before the first frame update
-    public Object Enemigo;
-    void Start()
+
+    public List<Transform> spawners = new List<Transform>();
+    public GameObject enemigos;
+    public int numeroEnemigos = 1;
+
+
+
+    float tiempo, tiempoespera = 5f;
+   
+
+    private void Start()
     {
-        Enemigos = GenerarEnemigos(20);
+        
+        
+    }
+    private void Update()
+    {
+        if (Time.time > tiempo )
+        {
+            tiempo = Time.time+ tiempoespera;
+            Debug.Log("a");
+            //GenerarEnemigos();
+        }
+        
+    }
+    void GenerarEnemigos() 
+    {
+        for (int i = 0; i <= spawners.Count-1; i++)
+        {
+            
+            for (int e = 0; e < numeroEnemigos; e++)
+            {
+                Instantiate(enemigos, spawners[i].position, Quaternion.identity);
+            }
+        }
+    }
+   public void GenerarEnemigos2()
+    {
+        for (int i = 0; i <= spawners.Count - 1; i++)
+        {
+
+            for (int e = 0; e < numeroEnemigos; e++)
+            {
+                Instantiate(enemigos, spawners[i].position, Quaternion.identity);
+            }
+        }
     }
 
-    // Update is called once per frame
-    
-    public List<GameObject> GenerarEnemigos(int numeroEnemigos)
-    {
-
-        for (int i = 0; i <= numeroEnemigos; i++)
-        {
-            Enemigos.Add(Instantiate(Enemigo) as GameObject);
-        }
-        return Enemigos;
-    }
-    public void EliminarEnemigos()
-    {
-        for (int i = 0; i <= Enemigos.Count; i++)
-        {
-            Destroy(Enemigos[i]);
-        }
-    }
 }
